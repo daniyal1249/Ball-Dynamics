@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+
+python_script.txt
+outline.md
+kl_old.py
+kinematics_lab_renewed.py
+archive.py
