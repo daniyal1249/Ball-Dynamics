@@ -218,11 +218,10 @@ class Environment():
 
 
 class Game():
-    def __init__(self, env, obj_type, obj_params, borders, gravity):
+    def __init__(self, env, obj_type, obj_params, gravity):
         self.env = env
         self.obj_type = obj_type
         self.obj_params = obj_params
-        self.borders = borders
         self.gravity = gravity
         self.load = True
         self.t = 0
@@ -317,7 +316,7 @@ class Game():
             screen.fill('white')
             kl_graphics.background(screen, screen_width, screen_height)
             
-            if not self.borders:
+            if not self.env.borders:
                 if self.current_state.selected:
                     object_height = screen_height - (ground_height * scale_ratio) - self.current_state.y + self.env.ground_pos[1]
                 else:
@@ -334,7 +333,7 @@ class Game():
                 self.previous_state = self.current_state
                 pos = pg.mouse.get_pos()
                 self.pointer(self.current_state)
-                self.current_state.evolution(self.borders, self.gravity, pos, delta_t)
+                self.current_state.evolution(self.env.borders, self.gravity, pos, delta_t)
                 self.t += delta_t
                 self.accumulator -= delta_t
 
@@ -360,12 +359,12 @@ def game_menu_screen():
 
 
 object = 'ball'
-ball_params = BallParams(mass=10, cor=0.7, mu=0.6, radius=45)
+ball_params = BallParams(mass=10, cor=0.8, mu=0.5, radius=45)
 current_screen = 'game'
 
-environment = Environment(borders=False)
+environment = Environment(borders=True)
 
-game = Game(env=environment, obj_type=object, obj_params=ball_params, borders=False, gravity=9.8)
+game = Game(env=environment, obj_type=object, obj_params=ball_params, gravity=9.8)
 
 # Game loop
 running = True
