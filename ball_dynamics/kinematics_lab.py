@@ -1,8 +1,8 @@
 import sys
 from dataclasses import dataclass
 import pygame as pg
-import kl_graphics
-import button
+import ball_dynamics.kl_graphics as kl_graphics
+import ball_dynamics.button as button
 
 pg.init()
 window_size = [pg.display.Info().current_w - 100, pg.display.Info().current_h - 100]
